@@ -172,7 +172,7 @@ foreach($report->organizations as $org)
 ```
 And we're going to have something that looks like this:
 
-![Hubstaff Report](/images/report.png)
+![Hubstaff Report](/images/php_report.png)
 
 And the same goes for `screenshots` functions, by changing the parameters to:
 
@@ -212,6 +212,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 ```
 And we'll have the following output:
 
-![Hubstaff Screenshots](/images/report.png)
+![Hubstaff Screenshots](/images/php_screenshot.png)
 
 The `hubstaff-php` client allows a PHP application to easily retrieve useful information from Hubstaff, making it easy for your customers to access the Hubstaff data within your application.
