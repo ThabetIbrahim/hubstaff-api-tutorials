@@ -1,31 +1,27 @@
 ![Tutorial Homepage](/images/homepage.png)
 
-This tutorial will go over how to integrate the Hubstaff gem into your Rails
-application. The Hubstaff gem allows you to easily link a User to their Hubstaff
-account and retrieve useful information such as custom team reports, project and
-activity details, screenshots, and much more.
+This tutorial will go over how to integrate the `hubstaff-ruby` gem into your Rails application. The Hubstaff gem allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
-The [Hubstaff-Gem-Tutorial
+The [Hubstaff Rails App
 repository](https://github.com/Smulligan85/Hubstaff-Gem-Tutorial) for this
 tutorial includes two branches. The `master branch` is the starter application
 that this tutorial will walkthrough and the `final-tut branch` is the complete
-application
+application.
 
 The starter applicaiton is a basic Rails app that includes a User model and a
 basic authentication. First, this tutorial will go over linking a User to their
-Hubstaff account and then show how to retrieve data. We'll be retrieving data
-via two endpoints provided by the Hubstaff API, custom team reports and
-screenshots
+Hubstaff account and then show how to retrieve data. 
 
-Before we begin, you will need to set up a [Hubstaff
+We'll retrieve two core resources provided by the Hubstaff API, custom team reports and screenshots.
+
+Before we begin, you need to set up a [Hubstaff
 account](https://hubstaff.com/). I also recommend creating some data so that
 your application will be able to view data, specifically create a organization,
-project, notes, and a few screenshots
+project, notes, and a few screenshots.
 
-After you've created some data we need to go to the [Hubstaff developer
+After you've created some data, you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
-application. Once we have our App Token we’re ready to dive in once you create
-an application and receive your `App-Token`
+application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
 Clone the `master branch` down and open the application in your editor of choice.
 
@@ -386,7 +382,5 @@ Create a file called `get_screenshots.html.erb` and add the following code:
 Now when you submit the form you should be redirected to a page displaying all
 the screenshots that fit within the given form parameters.
 
-The Hubstaff gem allows a Rails application to easily integrate and retrieve
-useful information from Hubstaff. The Hubstaff gem contains many more methods
-for retrieving data that makes it easy for your customers access to their
-Hubstaff data within your application.
+The `hubstaff-ruby` gem allows your Rails application to retrieve
+useful information from Hubstaff, making it easy for your customers access to their Hubstaff data within your application.
