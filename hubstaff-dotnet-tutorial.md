@@ -168,7 +168,7 @@ value_type["stop_time"] = "datetime";
 And generate the form like mentioned before, after that we gonna call the screenshots function using the following
 ```cs
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
-ViewBag.reports = hubstaff_api.custom_date_team(start_time.ToString("yyyy-MM-dd HH':'mm':'ss"), stop_time.ToString("yyyy-MM-dd HH':'mm':'ss"), options);
+ViewBag.reports = hubstaff_api.custom_date_team(start_time, stop_time, offset, options);
 
 ```
 And we'll have the following output:
