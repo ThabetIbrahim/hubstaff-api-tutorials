@@ -1,3 +1,5 @@
+# Consuming Hubstaff API In Rails Web Application
+
 ![Tutorial Homepage](/images/homepage.png)
 
 This tutorial will go over how to integrate the `hubstaff-ruby` gem into your Rails application. The Hubstaff gem allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
@@ -360,12 +362,9 @@ def get_screenshots
   @screenshots = user.client.screenshots(params[:start_time], params[:stop_time], options)
 end
 ```
-This method is very similar to our `#get_custom_report` method, where we build a
-options hash based on the form params and pass that hash as the third argument
-to our `#screenshots` method
+This method is very similar to our `#get_custom_report` method, where we build a options hash based on the form params and pass that hash as the third argument to our `#screenshots` method
 
-Now all that is left to do is display each screenshot. As I mentioned before all
-methods provided by the Hubstaff gem return JSON
+Now all that is left to do is display each screenshot. As I mentioned before all methods provided by the Hubstaff gem return JSON.
 
 Specifically, the `#screenshots` JSON output contains a url key with a value
 equal to the screenshot url. Let's extract the url address and display the each
@@ -383,4 +382,4 @@ Now when you submit the form you should be redirected to a page displaying all
 the screenshots that fit within the given form parameters.
 
 The `hubstaff-ruby` gem allows your Rails application to retrieve
-useful information from Hubstaff, making it easy for your customers access to their Hubstaff data within your application.
+useful information from the Hubstaff app, making it easy for your customers access to their Hubstaff data within your application.
