@@ -2,7 +2,7 @@
 
 ![Tutorial Homepage](/images/homepage.png)
 
-This tutorial will go over how to integrate the `hubstaff-ruby` gem into your Rails application. The Hubstaff gem allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
+This tutorial will go over how to integrate the `hubstaff-ruby` gem into your Rails application. The `hubstaff-ruby` gem allows you to easily link a user to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
 The [Hubstaff Rails App
 repository](https://github.com/Smulligan85/Hubstaff-Gem-Tutorial) for this
@@ -14,9 +14,9 @@ The starter applicaiton is a basic Rails app that includes a User model and a
 basic authentication. First, this tutorial will go over linking a User to their
 Hubstaff account and then show how to retrieve data. 
 
-We'll retrieve two core resources provided by the Hubstaff API, custom team reports and screenshots.
+You'll retrieve two core resources provided by the Hubstaff API, custom team reports and screenshots.
 
-Before we begin, you need to set up a [Hubstaff
+Before you begin, you need to set up a [Hubstaff
 account](https://hubstaff.com/). I also recommend creating some data so that
 your application will be able to view data, specifically create a organization,
 project, notes, and a few screenshots.
@@ -27,7 +27,7 @@ application. You’re ready to dive in once you create an application and receiv
 
 Clone the `master branch` down and open the application in your editor of choice.
 
-First we will open up our Gemfile and add the `hubstaff-ruby` gem and `dotenv`
+First you will open up your Gemfile and add the `hubstaff-ruby` gem and `dotenv`
 gem, then run `bundle install`.
 
 ```ruby
@@ -35,17 +35,17 @@ gem 'hubstaff-ruby', '~> 0.0.1'
 gem 'dotenv', '~> 2.1'
 ```
 For this tutorial you might not push anything up publicly, but that may change
-in the future. So, I'd recommend opening up our `.gitignore` file and include
+in the future. So, I'd recommend opening up your `.gitignore` file and include
 `.env.local`.
 
-We can then create this file in our root directory and place in the following
+You can then create this file in your root directory and place in the following
 code, swapping in your specific App Token:
 
 ```ruby
 APP_TOKEN=“<App Token Hubstaff Provided>”
 ```
-Now open up our `environment.rb` file where we will require hubstaff and load
-our .env.local file:
+Now open up your `environment.rb` file where you will require hubstaff and load
+your `.env.local` file:
 
 ```ruby
 # Load the Rails application.
@@ -56,8 +56,8 @@ Dotenv.load(".env.local")
 # Initialize the Rails application.
 Rails.application.initialize!
 ```
-Now that we have our hubstaff gem setup we can begin incorporating it into our
-User class. Let’s open up our `user.rb` file and include the following lines
+Now that you have your hubstaff gem setup you can begin incorporating it into your
+User class. Let’s open up your `user.rb` file and include the following lines:
 
 ```ruby
 class User < ActiveRecord::Base
@@ -67,11 +67,11 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
 end
 ```
-Next we will need to create a new migration for the users table to get the
+Next you will need to create a new migration for the users table to get the
 `:client` attribute working. In your terminal enter:
 `rails generate migration AddClientToUsers client:text`.
 
-For the serialize method to work correctly we will need to make client a text
+For the serialize method to work correctly you will need to make client a text
 data type. This will create the following migration table:
 
 ```ruby
@@ -81,14 +81,14 @@ class AddClientToUsers < ActiveRecord::Migration
   end
 end
 ```
-Once we have our migration setup we can run `rake db:migrate` to migrate the
+Once you have your migration setup, you can run `rake db:migrate` to migrate the
 database.
 
-Now that our User class has access to a client attribute we can link the logged
-in user to their Hubstaff account
+Now that your User class has access to a client attribute you can link the logged
+in user to their Hubstaff account.
 
 First let’s reorganize the `application.html.erb` file to include a button that
-will link to our Hubstaff log in form. Change the nav block to the following
+will link to your Hubstaff log in form. Change the nav block to the following
 
 ```erb
   <nav class="navbar navbar-default">
@@ -114,7 +114,7 @@ will link to our Hubstaff log in form. Change the nav block to the following
     </div>
   </nav>
 ```
-We will also need to add two routes; a get route to point to the log in form and
+You'll also need to add two routes; a get route to point to the log in form and
 a post route to post the log in data to Hubstaff
 
 ```ruby
@@ -132,7 +132,7 @@ Rails.application.routes.draw do
   resources :sessions
 end
 ```
-Next we will build out our log in form. Create a file called `client.html.erb` and add the following form:
+Next you will build out your log in form. Create a file called `client.html.erb` and add the following form:
 
 ```erb
 <%= form_tag(controller: "users", action: "auth_client", method: "post") do %>
@@ -143,8 +143,8 @@ Next we will build out our log in form. Create a file called `client.html.erb` a
   <%= submit_tag "Log into Hubstaff" %>
 <% end %>
 ```
-Now that we have our routes and form ready, let’s open up our
-`users_controller.rb` file and add our `#client` and `#auth_client` action.
+Now that you have your routes and form ready, let’s open up your
+`users_controller.rb` file and add your `#client` and `#auth_client` action.
 Add the following code to your UsersController:
 
 ```ruby
@@ -172,7 +172,7 @@ The `#auth_client` method validates that the form params are present and then
 assigns a new instance of the Hubstaff::Client class to the client variable.
 
 If the form was not fully filled in or the log in was unsuccessful the client
-will return nil and we redirect the user with a flash message.
+will return nil and you redirect the user with a flash message.
 
 Otherwise the user’s client attribute is assigned to the client variable which
 stores the instance of Hubstaff::Client, saves the user and redirects with a
@@ -181,7 +181,7 @@ success message
 Now the user is fully linked to their Hubstaff account and won’t need to log in
 again when they use the application!
 
-Now that the user is linked to their Hubstaff account we can use forms to
+Now that the user is linked to their Hubstaff account you can use forms to
 retrieve specific information. As I mentioned in the introduction, this tutorial
 will go over retrieving custom team report data and screenshots
 
@@ -189,7 +189,7 @@ Check out the [documentation](https://github.com/hookengine/hubstaff-ruby) if
 you would like to learn about additional methods provided by the Hubstaff gem.
 Lets get started
 
-First we will add the appropriate post routes to handle our form data. Here is
+First you will add the appropriate post routes to handle your form data. Here is
 what the final routes file should look like
 
 ```ruby
@@ -209,7 +209,7 @@ Rails.application.routes.draw do
   resources :sessions
 end
 ```
-Next in our `show.html.erb` file we will build our buttons and forms using
+Next in your `show.html.erb` file you will build your buttons and forms using
 Bootstrap modals. Here is what the revised show file will look like
 
 ```erb
@@ -294,7 +294,7 @@ Bootstrap modals. Here is what the revised show file will look like
   </div>
 <% end %>
 ```
-Finally we have to write the methods to retrieve the custom report data and screenshots. Let’s begin with the `#get_custom_report` method.
+Finally you have to write the methods to retrieve the custom report data and screenshots. Let’s begin with the `#get_custom_report` method.
 
 ```ruby
   def get_custom_report
@@ -311,10 +311,10 @@ Finally we have to write the methods to retrieve the custom report data and scre
   end
 ```
 
-Before calling the Hubstaff gem method `#custom_data_team` we need to build our
+Before calling the Hubstaff gem method `#custom_data_team` you need to build your
 options hash with the params provided by the form
 
-We also need to add some validations so that we don’t pass an empty string as a
+You also need to add some validations so that you don’t pass an empty string as a
 value.
 
 It’s important to use the proper key names for using all the Hubstaff methods
@@ -322,11 +322,11 @@ that take a options hash correctly, please reference the
 [documentation](https://github.com/hookengine/hubstaff-ruby) to confirm the
 proper key names needed for each method
 
-With the options hash built, we will simply pass it as the third argument and
+With the options hash built, you'll simply pass it as the third argument and
 assign the returned JSON to @report.  As a side note, all Hubstaff methods will
 return JSON data
 
-Now it’s only a matter of extracting the JSON to display nicely on our view
+Now it’s only a matter of extracting the JSON to display nicely on your view
 page. Create a file called `get_custom_report.html.erb` and place the following
 code in it
 
@@ -344,11 +344,11 @@ code in it
   <% end %>
 <% end %>
 ```
-Awesome, now we can retrieve a custom team report from our Hubstaff account!
+Awesome, now you can retrieve a custom team report from your Hubstaff account!
 
 ![Custom Report](/images/custom_report.png)
 
-Next let's create a method to retrieve screenshots. Back in our
+Next let's create a method to retrieve screenshots. Back in your
 `users_controller.rb` file add the following method:
 
 ```ruby
@@ -362,13 +362,13 @@ def get_screenshots
   @screenshots = user.client.screenshots(params[:start_time], params[:stop_time], options)
 end
 ```
-This method is very similar to our `#get_custom_report` method, where we build a options hash based on the form params and pass that hash as the third argument to our `#screenshots` method
+This method is very similar to your `#get_custom_report` method, where you build a options hash based on the form params and pass that hash as the third argument to your `#screenshots` method
 
 Now all that is left to do is display each screenshot. As I mentioned before all methods provided by the Hubstaff gem return JSON.
 
 Specifically, the `#screenshots` JSON output contains a url key with a value
 equal to the screenshot url. Let's extract the url address and display the each
-image on our view page
+image on your view page
 
 Create a file called `get_screenshots.html.erb` and add the following code:
 

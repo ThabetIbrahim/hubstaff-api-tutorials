@@ -1,35 +1,35 @@
 # Consuming Hubstaff API In ASP.NET Web Application
 
-This tutorial will go over how to integrate the Hubstaff ASP.NET API into your own ASP.NET application. The Hubstaff API allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
+This tutorial will go over how to integrate the Hubstaff ASP.NET API into your own ASP.NET application. The Hubstaff API allows you to easily link a user to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
 The [Hubstaff ASP.NET App repository]()  for this tutorial includes `master branch` which contains the complete application you'll have when you finish this tutorial.
 
 First, this tutorial will go over linking a User to their Hubstaff account and then show how to retrieve data.
 
-We'll retrieve two core resources provided by the Hubstaff API,
+You'll retrieve two core resources provided by the Hubstaff API,
 custom team reports and screenshots.
 
-Before we start, you need to set up a [Hubstaff account](https://hubstaff.com/). I also recommend creating some data so that your application will be able to
+Before you start, you need to set up a [Hubstaff account](https://hubstaff.com/). I also recommend creating some data so that your application will be able to
 view data, specifically create an organization, project, notes, and a few screenshots.
 
 After you've created some data you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Clone the `master branch` down and open the application in your editor of choice. First we will edit the hubstaff `config.php` file and add the `App-Token` we generated from the Hubstaff developer page.
+Clone the `master branch` down and open the application in your editor of choice. First you will edit the hubstaff `config.cs` file and add the `App-Token` you generated from the Hubstaff developer page.
 
 ```cs
 public string App_token = "<App Token Hubstaff Provided>";
 ```
-After editing our config.php file we'll be initializing hubstaff api into our project by calling the following
+After editing your config.cs file you'll be initializing hubstaff api into your project by calling the following
 
 ```cs
  aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ```
 
-Next, we'll generate our `App-Token` using your hubstaff account email address and password.
+Next, you'll generate your `App-Token` using your hubstaff account email address and password.
 
-If we take a look into Views/dashboard/index.cshtml file we can see the connection form:
+If you take a look into Views/dashboard/index.cshtml file you can see the connection form:
 
 ```html
 <p>
@@ -51,17 +51,17 @@ ViewBag.email = email;
 ViewBag.password = password;
 ```
 
-Now we'll move our generated authentication token it into our Config.cs file.
+Now you'll move your generated authentication token it into our config.cs file.
 
 ```cs
 public string auth_token = “<Generated authentication token>”;
 ```
 
-Once we got all that done we can start requesting account related data like reports, users, organizations, notes and others from hubstaff.
+Once you get all that done you can start requesting account related data like reports, users, organizations, notes and others from hubstaff.
 
 Now let's start with fetching the team reports in a specific period of time.
 
-First we need to specify all the parameters we're going to use for that operation.
+First you need to specify all the parameters you're going to use for that operation.
 
 ```cs
 Dictionary <string, string[]> param = new Dictionary <string, string[]>();
@@ -80,9 +80,9 @@ value_type["show_notes"] = "select";
 value_type["show_activity"] = "select";
 value_type["include_archived"] = "select";
 ```
-We're going to have to required parameters "start_date" and "end_date" of type date ("YYYY-MM-DD").
+You need two required parameters "start_date" and "end_date" of type date ("YYYY-MM-DD").
 
-Next we gonna generate our form using the following code.
+Next, you'll generate your form using the following code.
 
 ```cs
 @foreach (var item in ViewBag.param) {
@@ -117,13 +117,15 @@ Next we gonna generate our form using the following code.
 }
 ```
 
-Then we'll be requesting the report by calling custom_date_team function
+Then you'll request the report by calling custom_date_team function
+
 ```cs
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ViewBag.reports = hubstaff_api.custom_date_team(start_date, end_date, options);
 ```
-Now let's print the output into our screen by iterating over the retured json string
-```php
+Now let's print the output onto your screen by iterating over the retured json string:
+
+```cs
 @if(ViewBag.reports != null){
 	foreach(var org in ViewBag.reports["organizations"])
 	{
@@ -146,7 +148,7 @@ Now let's print the output into our screen by iterating over the retured json st
 	}
 }	
 ```
-And we're going to have something that looks like this
+And you're going to have something that looks like this
 
 ![asp_report](/images/asp_report.png)
 
@@ -165,13 +167,14 @@ value_type["offset"] = "input";
 value_type["start_time"] = "datetime";
 value_type["stop_time"] = "datetime";
 ```
-And generate the form like mentioned before, after that we gonna call the screenshots function using the following
+And generate the form like mentioned before, after that you'll call the screenshots function using the following:
+
 ```cs
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ViewBag.reports = hubstaff_api.custom_date_team(start_time, stop_time, offset, options);
 
 ```
-And we'll have the following output:
+And you'll have the following output:
 
 ![asp_screenshot](/images/asp_screenshot.png)
 
