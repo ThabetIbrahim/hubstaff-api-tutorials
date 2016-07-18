@@ -173,6 +173,6 @@ ViewBag.reports = hubstaff_api.custom_date_team(start_time.ToString("yyyy-MM-dd 
 ```
 And we'll have the following output:
 
-![asp_screenshot](/images/asp_screenshots.png)
+![asp_screenshot](/images/asp_screenshot.png)
 
 The `hubstaff-dotnet` client allows an ASP.NET application to easily retrieve useful information from the Hubstaff app, making it easy for your customers to access their Hubstaff data within your application.
