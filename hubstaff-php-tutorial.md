@@ -2,10 +2,9 @@
 
 This tutorial will go over how to integrate the `hubstaff-php` client into your PHP application. The Hubstaff API allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
-The [Hubstaff PHP App repository]() for this tutorial includes two branches.
-The `master branch` is the starter application that we'll add features to and the `final-tut branch` is the complete application you'll have when you after this tutorial.
+The [Hubstaff PHP App repository]() for this tutorial includes `master branch` which contains the complete application you'll have when you finish this tutorial.
 
-The starter applicaiton is a basic PHP app that includes a User model and basic authentication. First, this tutorial will go over linking a User to their Hubstaff account and then show how to retrieve data.
+First, this tutorial will go over linking a User to their Hubstaff account and then show how to retrieve data.
 
 We'll retrieve two core resources provided by the Hubstaff API,
 custom team reports and screenshots. 
@@ -212,6 +211,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 ```
 And we'll have the following output:
 
-![Hubstaff Screenshots](/images/php_screenshot.png)s
+![Hubstaff Screenshots](/images/php_screenshot.png)
 
 The `hubstaff-php` client allows a PHP application to easily retrieve useful information from the Hubstaff app, making it easy for your customers to access their Hubstaff data within your application.
