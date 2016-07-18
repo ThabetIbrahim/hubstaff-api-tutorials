@@ -201,7 +201,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$stop_time = $_POST['stop_time'];
 	$offset = $_POST['offset'];
 	$options = $_POST['options'];
-	$screenshots = $hubstaff->screenshots($start_time, $stop_time, $offset,$options);
+	$screenshots = $hubstaff->screenshots($start_time, $stop_time, $offset, $options);
 	if(isset($screenshots->error))
 	{
 		echo '<div class = "info" >'.$screenshots->error.'</div>';
