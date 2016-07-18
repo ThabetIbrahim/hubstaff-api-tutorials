@@ -199,10 +199,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 	$start_time = $_POST['start_time'];
 	$stop_time = $_POST['stop_time'];
-	$datetime_start = new DateTime($start_time);
-	$datetime_end = new DateTime($stop_time);
+	$offset = $_POST['offset'];
 	$options = $_POST['options'];
-	$screenshots = $hubstaff->screenshots($datetime_start->format(DateTime::ISO8601), $datetime_end->format(DateTime::ISO8601),$options);
+	$screenshots = $hubstaff->screenshots($start_time, $stop_time, $offset,$options);
 	if(isset($screenshots->error))
 	{
 		echo '<div class = "info" >'.$screenshots->error.'</div>';
