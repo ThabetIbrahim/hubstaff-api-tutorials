@@ -148,7 +148,7 @@ Now let's print the output into our screen by iterating over the retured json st
 ```
 And we're going to have something that looks like this
 
-![report](/images/asp_report.png)
+![asp_report](/images/asp_report.png)
 
 And the same goes for screenshots functions, by changing the parameters to
 ```cs
@@ -173,6 +173,6 @@ ViewBag.reports = hubstaff_api.custom_date_team(start_time.ToString("yyyy-MM-dd 
 ```
 And we'll have the following output:
 
-![report](/images/asp_screenshots.png)
+![asp_screenshot](/images/asp_screenshots.png)
 
 The `hubstaff-dotnet` client allows an ASP.NET application to easily retrieve useful information from the Hubstaff app, making it easy for your customers to access their Hubstaff data within your application.
