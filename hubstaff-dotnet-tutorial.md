@@ -2,9 +2,9 @@
 
 This tutorial will go over how to integrate the Hubstaff ASP.NET API into your own ASP.NET application. The Hubstaff API allows you to easily link a User to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
-The [Hubstaff ASP.NET App repository]() for this tutorial includes two branches. The `master branch` is the starter application that we'll add features and the `final-tut branch` is the complete application you'll have after this tutorial.
+The [Hubstaff ASP.NET App repository]()  for this tutorial includes `master branch` which contains the complete application you'll have when you finish this tutorial.
 
-The starter applicaiton is a basic ASP.NET app that includes a User model and some basic authentication. This tutorial will go over first linking a User to their Hubstaff account and then go over how to retrieve data.
+First, this tutorial will go over linking a User to their Hubstaff account and then show how to retrieve data.
 
 We'll retrieve two core resources provided by the Hubstaff API,
 custom team reports and screenshots.
