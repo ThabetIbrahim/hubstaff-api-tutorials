@@ -16,7 +16,7 @@ After you've created some data you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Clone the `master branch` down and open the application in your editor of choice. First you will edit the hubstaff `config.php` file and add the `App-Token` you generated from the Hubstaff developer page.
+Download the sample application and open it in your editor of choice. First you will edit the hubstaff `config.php` file and add the `App-Token` you generated from the Hubstaff developer page.
 
 ```php
 App_Token=“<App Token Hubstaff Provided>”
