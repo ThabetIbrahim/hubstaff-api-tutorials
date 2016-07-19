@@ -58,7 +58,7 @@ if(isset($data['auth_token']))
 }
 ```
 
-Now you'll move your generated authentication token it into your config.php file.
+Now you'll move your generated authentication token it into your `config.php` file.
 
 ```php
 auth_token=“<Generated authentication token>”
