@@ -2,7 +2,7 @@
 
 This tutorial will go over how to integrate the `hubstaff-php` client into your PHP application. The Hubstaff API allows you to easily link a user to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
-The [Hubstaff PHP App repository]() for this tutorial includes a `master branch`, which contains the complete application you'll have when you finish this tutorial.
+The [Hubstaff PHP App repository](https://github.com/hookengine/hubstaff-sample-apps/tree/master/php-sample-app) contains the complete application you'll have when you finish this tutorial.
 
 First, this tutorial will go over linking a User to their Hubstaff account and then show how to retrieve data.
 
