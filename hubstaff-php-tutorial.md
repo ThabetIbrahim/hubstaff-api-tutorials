@@ -28,9 +28,10 @@ include("hubstaff/hubstaff.php");
 $hubstaff = new hubstaff();
 ```
 
-Next, you'll generate your `App-Token` using your hubstaff account email address and password. If you take a look into pages/dashboard.php file you can see the connection form.
+Next, you'll generate your `App-Token` using your hubstaff account email address and password. If you take a look into `pages/dashboard.php` file you can see the connection form.
 
 ```html
+<-- pages/dashboard.php --!>
 <div class = "hubstaff-form">
 	<form method = "post" action = "http://<?php echo $_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>" >
 	  <input type = "text" name = "email" value = "" placeholder="Add your Hubstaff account email address" >
