@@ -45,6 +45,8 @@ The form submission will call the following code to generate the authentication
 token:
 
 ```php
+//pages/dashboard.php
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 $data = $hubstaff->auth($_POST['email'],$_POST['password']);
