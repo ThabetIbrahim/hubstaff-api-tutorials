@@ -16,7 +16,7 @@ After you've created some data you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Download the sample application and open it in your editor of choice. First you will edit the `hubstaff/config.cs` file and add the `App-Token` you generated from the Hubstaff developer page.
+Download the sample application and open it in your editor of choice. First you're going to run on command line `dotnet restore` to download the depndancies. Next you will edit the `hubstaff/config.cs` file and add the `App-Token` you generated from the Hubstaff developer page.
 
 ```cs
 public string App_token = "<App Token Hubstaff Provided>";
@@ -24,6 +24,8 @@ public string App_token = "<App Token Hubstaff Provided>";
 After editing your config.cs file you'll be initializing hubstaff api into your project by calling the following
 
 ```cs
+/* this line can be found in all controllers */
+
  aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ```
 
@@ -32,6 +34,8 @@ Next, you'll generate your `App-Token` using your hubstaff account email address
 If you take a look into Views/dashboard/index.cshtml file you can see the connection form:
 
 ```html
+<!-- Views/Dashboard/index.cshtml  -->
+
 <p>
 	<a href = "#" class = "connect" >Connect to Hubstaff</a>
   <div class = "hubstaff-form" >
@@ -42,9 +46,11 @@ If you take a look into Views/dashboard/index.cshtml file you can see the connec
   </div>
 </p>
 ```
-Form submission will call the following ASP.NET code found in controllers/dashboard.cs to generate the authentication token.
+Form submission will call the following ASP.NET code found in Controllers/dashboard.cs to generate the authentication token.
 
 ```cs
+/* Controllers/Dashboard.cs */
+
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ViewBag.Data = hubstaff_api.auth(email,password);
 ViewBag.email = email;
@@ -64,6 +70,8 @@ Now let's start with fetching the team reports in a specific period of time.
 First you need to specify all the parameters you're going to use for that operation.
 
 ```cs
+/* Controllers/Reports.cs */
+
 Dictionary <string, string[]> param = new Dictionary <string, string[]>();
 param["start_date"] = new string[] {"start_date"};
 param["end_date"]   = new string[] {"end_date"};
@@ -85,6 +93,8 @@ You need two required parameters "start_date" and "end_date" of type date ("YYYY
 Next, you'll generate your form using the following code.
 
 ```cs
+/* Views/Reports/index.cshtml */
+
 @foreach (var item in ViewBag.param) {
   if(item.Key == "options")
   {
@@ -120,12 +130,16 @@ Next, you'll generate your form using the following code.
 Then you'll request the report by calling custom_date_team function
 
 ```cs
+/* Controllers/Reports.cs */
+
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ViewBag.reports = hubstaff_api.custom_date_team(start_date, end_date, options);
 ```
-Now let's print the output onto your screen by iterating over the retured json string:
+Now let's print the output onto your screen by iterating over the returned json string:
 
 ```cs
+/* Views/Reports/index.cshtml */
+
 @if(ViewBag.reports != null){
 	foreach(var org in ViewBag.reports["organizations"])
 	{
@@ -154,6 +168,8 @@ And you're going to have something that looks like this
 
 And the same goes for screenshots functions, by changing the parameters to
 ```cs
+/* Controllers/Screenshots.cs */
+
 Dictionary <string, string[]> param = new Dictionary <string, string[]>();
 param["start_time"] = new string[] {"start_time"};
 param["stop_time"]   = new string[] {"stop_time"};
@@ -170,6 +186,8 @@ value_type["stop_time"] = "datetime";
 And generate the form like mentioned before, after that you'll call the screenshots function using the following:
 
 ```cs
+/* Views/Screenshots/index.cshtml */
+
 aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
 ViewBag.reports = hubstaff_api.custom_date_team(start_time, stop_time, offset, options);
 
