@@ -21,7 +21,7 @@ After you've created some data, you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Clone the `master branch` down and open the application in your editor of choice.
+Download the sample application and open it application in your editor of choice.
 
 First you will open up your Gemfile and add the `hubstaff-ruby` gem and `dotenv`
 gem, then run `bundle install`.
