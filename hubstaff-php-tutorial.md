@@ -45,7 +45,7 @@ The form submission will call the following code to generate the authentication
 token:
 
 ```php
-//pages/dashboard.php
+/* pages/dashboard.php */
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -68,11 +68,13 @@ auth_token=“<Generated authentication token>”
 
 Once that's done, you can request account related data like reports, users, organizations, notes and others from hubstaff.
 
-Now let's start with fetching the team reports in a specific period of time.
+Now let's start with fetching the team reports in a specific period of time, you can find the following code snipets in pages/reports.php file.
 
 First you need to specify all the parameters you'll use for that operation.
 
 ```php
+/* pages/reports.php */
+
 $params = array();
 $params['start_date'] = "start_date";
 $params['end_date']   = "end_date";
@@ -100,6 +102,8 @@ You need two required parameters "start_date" and "end_date" of type date ("YYYY
 Next you'll fill your form using the following code:
 
 ```php
+/* pages/reports.php */
+
 foreach($params as $index => $param)
 {
 
@@ -137,6 +141,8 @@ foreach($params as $index => $param)
 Then you'll request the report by calling `custom_date_team` function:
 
 ```php
+/* pages/screenshots.php */
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 	$start_date = $_POST['start_date'];
@@ -152,6 +158,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 Now let's display the output onto your screen by iterating over the retured json string:
 
 ```php
+/* pages/screenshots.php */
+
 foreach($report->organizations as $org)
 {
 	echo "<h2>Organization Name: ".$org->name."</h2>";
@@ -176,9 +184,11 @@ And you'll have something that looks like this:
 
 ![Hubstaff Report](/images/php_report.png)
 
-And the same goes for `screenshots` functions, by changing the parameters to:
+And the same goes for `screenshots` functions if we took a look in "pages/screenshots.php" file we changed the parameters to:
 
 ```php
+/* pages/screenshots.php */
+
 $params = array();
 $params['start_time'] = "start_time";
 $params['stop_time']  = "stop_time";
@@ -198,6 +208,8 @@ $value_type['offset'] = 'input';
 And then create the form as mentioned before. After that you'll call the `screenshots` function using the following code:
 
 ```php
+/* pages/screenshots.php */
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 	$start_time = $_POST['start_time'];
