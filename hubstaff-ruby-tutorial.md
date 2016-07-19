@@ -5,14 +5,10 @@
 This tutorial will go over how to integrate the `hubstaff-ruby` gem into your Rails application. The `hubstaff-ruby` gem allows you to easily link a user to their Hubstaff account and retrieve useful information such as custom team reports, project and activity details, screenshots, and much more.
 
 The [Hubstaff Rails App
-repository](https://github.com/Smulligan85/Hubstaff-Gem-Tutorial) for this
-tutorial includes two branches. The `master branch` is the starter application
-that this tutorial will walkthrough and the `final-tut branch` is the complete
-application.
+repository](https://github.com/hookengine/hubstaff-sample-apps/tree/master/rails-sample-app) contains the complete application you'll have after this tutorial.
 
-The starter applicaiton is a basic Rails app that includes a User model and a
-basic authentication. First, this tutorial will go over linking a User to their
-Hubstaff account and then show how to retrieve data. 
+First, this tutorial will go over linking a User to their
+Hubstaff account and then show how to retrieve data.
 
 You'll retrieve two core resources provided by the Hubstaff API, custom team reports and screenshots.
 
