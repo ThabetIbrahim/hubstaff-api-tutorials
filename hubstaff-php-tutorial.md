@@ -16,16 +16,13 @@ After you've created some data you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Clone the `master branch` down and open the application in your editor of choice. First we will edit the hubstaff `config.php` file and add the `App-Token` we generated from the Hubstaff developer page.
+Clone the `master branch` down and open the application in your editor of choice.
 
-```php
-App_Token=“<App Token Hubstaff Provided>”
-```
-After editing our `config.php` file we'll initialize the hubstaff api client into our project by calling the following:
+First, we'll initialize the hubstaff api client with the `App-Token` into our project by calling the following:
 
 ```php
 include("hubstaff/hubstaff.php");
-$hubstaff = new hubstaff();
+$hubstaff = new hubstaff\Client("< Hubstaff app token >");
 ```
 
 Next we'll be generating our `App-Token` using your hubstaff account email address and password.
@@ -55,12 +52,6 @@ if(isset($data['auth_token']))
 {
 	echo "<div class = 'info'>error: ".$data['error']."</div>";
 }
-```
-
-Now we'll move our generated authentication token it into our config.php file.
-
-```php
-auth_token=“<Generated authentication token>”
 ```
 
 Once that's done we can start requesting account related data like reports, users, organizations, notes and others from hubstaff.
