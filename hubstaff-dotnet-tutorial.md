@@ -16,15 +16,13 @@ After you've created some data you need to go to the [Hubstaff developer
 page](https://developer.hubstaff.com/), click My Apps and create a new
 application. You’re ready to dive in once you create an application and receive your `App-Token`.
 
-Clone the `master branch` down and open the application in your editor of choice. First we will edit the hubstaff `config.php` file and add the `App-Token` we generated from the Hubstaff developer page.
+Clone the `master branch` down and open the application in your editor of choice. 
 
-```cs
-public string App_token = "<App Token Hubstaff Provided>";
 ```
-After editing our config.php file we'll be initializing hubstaff api into our project by calling the following
+First we'll be initializing hubstaff api into our project by calling the following
 
 ```cs
- aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
+ hubstaff.client hubstaff_api = new hubstaff.client();
 ```
 
 Next, we'll generate our `App-Token` using your hubstaff account email address and password.
@@ -35,6 +33,7 @@ If we take a look into Views/dashboard/index.cshtml file we can see the connecti
 <p>
 	<a href = "#" class = "connect" >Connect to Hubstaff</a>
   <div class = "hubstaff-form" >
+  <input type="text" class="text" value="@ViewBag.app_token" id="app_token" name="app_token" placeholder="Please add your hubstaff app token" />
   <input type="text" class="text" value="@ViewBag.email" id="email" name="email" placeholder="Please add your hubstaff account email" />
   <input type="text" class="text" value="@ViewBag.password" id="email" name="password" placeholder="Please add your hubstaff account password" />
   <br>
@@ -45,16 +44,11 @@ If we take a look into Views/dashboard/index.cshtml file we can see the connecti
 Form submission will call the following ASP.NET code found in controllers/dashboard.cs to generate the authentication token.
 
 ```cs
-aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
-ViewBag.Data = hubstaff_api.auth(email,password);
+hubstaff.client hubstaff_api = new hubstaff.client();
+ViewBag.Data = hubstaff_api.auth(app_token,email,password);
+ViewBag.app_token = app_token;
 ViewBag.email = email;
 ViewBag.password = password;
-```
-
-Now we'll move our generated authentication token it into our Config.cs file.
-
-```cs
-public string auth_token = “<Generated authentication token>”;
 ```
 
 Once we got all that done we can start requesting account related data like reports, users, organizations, notes and others from hubstaff.
@@ -119,7 +113,7 @@ Next we gonna generate our form using the following code.
 
 Then we'll be requesting the report by calling custom_date_team function
 ```cs
-aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
+hubstaff.client hubstaff_api = new hubstaff.client();
 ViewBag.reports = hubstaff_api.custom_date_team(start_date, end_date, options);
 ```
 Now let's print the output into our screen by iterating over the retured json string
@@ -167,7 +161,7 @@ value_type["stop_time"] = "datetime";
 ```
 And generate the form like mentioned before, after that we gonna call the screenshots function using the following
 ```cs
-aspnetcoreapp.hubstaff_api hubstaff_api = new aspnetcoreapp.hubstaff_api();
+hubstaff.client hubstaff_api = new hubstaff.client();
 ViewBag.reports = hubstaff_api.custom_date_team(start_time, stop_time, offset, options);
 
 ```
