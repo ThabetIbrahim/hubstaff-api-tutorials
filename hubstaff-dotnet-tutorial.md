@@ -18,11 +18,11 @@ application. You’re ready to dive in once you create an application and receiv
 
 Clone the `master branch` down and open the application in your editor of choice. 
 
-```
+
 First we'll be initializing hubstaff api into our project by calling the following
 
 ```cs
- hubstaff.client hubstaff_api = new hubstaff.client();
+ hubstaff.client hubstaff_api = new hubstaff.client("< your hubstaff app token >");
 ```
 
 Next, we'll generate our `App-Token` using your hubstaff account email address and password.
@@ -33,7 +33,6 @@ If we take a look into Views/dashboard/index.cshtml file we can see the connecti
 <p>
 	<a href = "#" class = "connect" >Connect to Hubstaff</a>
   <div class = "hubstaff-form" >
-  <input type="text" class="text" value="@ViewBag.app_token" id="app_token" name="app_token" placeholder="Please add your hubstaff app token" />
   <input type="text" class="text" value="@ViewBag.email" id="email" name="email" placeholder="Please add your hubstaff account email" />
   <input type="text" class="text" value="@ViewBag.password" id="email" name="password" placeholder="Please add your hubstaff account password" />
   <br>
@@ -46,7 +45,6 @@ Form submission will call the following ASP.NET code found in controllers/dashbo
 ```cs
 hubstaff.client hubstaff_api = new hubstaff.client();
 ViewBag.Data = hubstaff_api.auth(app_token,email,password);
-ViewBag.app_token = app_token;
 ViewBag.email = email;
 ViewBag.password = password;
 ```
