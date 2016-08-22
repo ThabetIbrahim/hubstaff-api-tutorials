@@ -46,7 +46,6 @@ $password = $_POST['password'];
 $data = $hubstaff->auth($_POST['email'],$_POST['password']);
 if(isset($data['auth_token']))
 {
-	$_SESSION['Auth-Token'] = $data['auth_token'];
 	echo "<div class = 'info'>Your auth token is: ".$data['auth_token']."</div>";
 }else
 {
